@@ -1,12 +1,14 @@
 import React from 'react';
 import Section from './Section';
 import MermaidDiagram from './MermaidDiagram';
+import CopyMarkdownButton from './CopyMarkdownButton';
 import {
   Cloud, Server, Database, HardDrive, Globe, GitBranch,
   Shield, Zap, Activity, Box, Network, Lock, Code,
   CheckCircle, AlertTriangle, Clock, Terminal, Layers
 } from 'lucide-react';
 import * as Charts from '../data/awsCharts';
+import { generateAWSMarkdown } from '../utils/markdownGenerator';
 
 const CodeBlock = ({ code, language = 'yaml' }) => (
   <div className="bg-slate-900 text-slate-50 p-4 rounded-lg overflow-x-auto mb-4 font-mono text-sm border border-slate-700 shadow-inner">
@@ -18,6 +20,8 @@ const CodeBlock = ({ code, language = 'yaml' }) => (
 const AWSTab = () => {
   return (
     <div className="fade-in space-y-12">
+      <CopyMarkdownButton generateMarkdown={generateAWSMarkdown} tabName="AWS" />
+
       {/* 1. Vue d'Ensemble Infrastructure */}
       <Section title="1. Infrastructure AWS - Vue d'Ensemble" id="aws-overview">
         <p className="text-lg text-slate-600 mb-6">

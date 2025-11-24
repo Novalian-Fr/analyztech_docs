@@ -1,12 +1,14 @@
 import React from 'react';
 import Section from './Section';
 import MermaidDiagram from './MermaidDiagram';
+import CopyMarkdownButton from './CopyMarkdownButton';
 import {
   Server, Database, Layers, Zap, AlertTriangle,
   CheckCircle, Activity, Globe, Shield, Code, Settings,
   GitBranch, Box, HardDrive, Network, Clock
 } from 'lucide-react';
 import * as Charts from '../data/n8nCharts';
+import { generateN8NMarkdown } from '../utils/markdownGenerator';
 
 const CodeBlock = ({ code, language = 'yaml' }) => (
   <div className="bg-slate-900 text-slate-50 p-4 rounded-lg overflow-x-auto mb-4 font-mono text-sm border border-slate-700 shadow-inner">
@@ -18,6 +20,8 @@ const CodeBlock = ({ code, language = 'yaml' }) => (
 const N8NTab = () => {
   return (
     <div className="fade-in space-y-12">
+      <CopyMarkdownButton generateMarkdown={generateN8NMarkdown} tabName="N8N" />
+
       {/* 1. Architecture Globale */}
       <Section title="1. Architecture N8N - Vue d'Ensemble" id="n8n-architecture">
         <p className="text-lg text-slate-600 mb-6">

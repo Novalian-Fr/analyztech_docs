@@ -1,12 +1,14 @@
 import React from 'react';
 import Section from './Section';
 import MermaidDiagram from './MermaidDiagram';
+import CopyMarkdownButton from './CopyMarkdownButton';
 import {
   Database, HardDrive, Network, Box, Globe, Brain, ScanText, Workflow,
   ShieldCheck, Layers, Server, Code, Lock, AlertTriangle, Terminal,
   Cpu, Activity, FileText, Zap, MessageSquare, Briefcase
 } from 'lucide-react';
 import * as Charts from '../data/backendCharts';
+import { generateBackendMarkdown } from '../utils/markdownGenerator';
 
 const CodeBlock = ({ code, language = 'typescript' }) => (
   <div className="bg-slate-900 text-slate-50 p-4 rounded-lg overflow-x-auto mb-4 font-mono text-sm border border-slate-700 shadow-inner">
@@ -18,6 +20,8 @@ const CodeBlock = ({ code, language = 'typescript' }) => (
 const BackendTab = () => {
   return (
     <div className="fade-in space-y-12">
+      <CopyMarkdownButton generateMarkdown={generateBackendMarkdown} tabName="Backend" />
+
       {/* 1. Architecture Globale */}
       <Section title="1. Architecture Globale" id="architecture">
         <p className="text-lg text-slate-600 mb-6">

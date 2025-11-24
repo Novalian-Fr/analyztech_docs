@@ -1,12 +1,14 @@
 import React from 'react';
 import Section from './Section';
 import MermaidDiagram from './MermaidDiagram';
+import CopyMarkdownButton from './CopyMarkdownButton';
 import {
   Layout, Folder, Globe, Shield, Database, Zap, AlertTriangle,
   Lock, Code, Server, Activity, FileText, Layers, ArrowRight,
   CheckCircle, XCircle, AlertCircle
 } from 'lucide-react';
 import * as Charts from '../data/frontendCharts';
+import { generateFrontendMarkdown } from '../utils/markdownGenerator';
 
 const CodeBlock = ({ code, language = 'typescript' }) => (
   <div className="bg-slate-900 text-slate-50 p-4 rounded-lg overflow-x-auto mb-4 font-mono text-sm border border-slate-700 shadow-inner">
@@ -18,6 +20,8 @@ const CodeBlock = ({ code, language = 'typescript' }) => (
 const FrontendTab = () => {
   return (
     <div className="fade-in space-y-12">
+      <CopyMarkdownButton generateMarkdown={generateFrontendMarkdown} tabName="Frontend" />
+
       {/* 1. Architecture Globale */}
       <Section title="1. Architecture Globale & Flux" id="frontend-architecture">
         <p className="text-lg text-slate-600 mb-6">
